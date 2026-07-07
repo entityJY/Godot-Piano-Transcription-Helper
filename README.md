@@ -6,7 +6,7 @@ A tool to analyse music files by frequencies of every piano key, and analyse cho
 
 mp3 and ogg files are supported.
 
-Created on Godot 3.4
+Originally created on Godot 3.4, this repo updates it to run on Godot 4.6
 
 
 ### Screenshot
