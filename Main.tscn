@@ -1,858 +1,699 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene format=3 uid="uid://c8tivw7738ui8"]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://fonts/Metropolis-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource type="Script" uid="uid://blwba8lhx3hnh" path="res://Main.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://btlu711fhaffg" path="res://fonts/Metropolis-Regular.otf" id="2"]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 1, 0, 1, 1, 0, 1, 1, 1 )
+[sub_resource type="Gradient" id="1"]
+colors = PackedColorArray(1, 0, 1, 1, 0, 1, 1, 1)
 
-[sub_resource type="InputEventAction" id=2]
-action = "hide"
+[sub_resource type="Shortcut" id="3"]
 
-[sub_resource type="ShortCut" id=3]
-shortcut = SubResource( 2 )
+[sub_resource type="Shortcut" id="5"]
 
-[sub_resource type="InputEventAction" id=4]
-action = "startstop"
+[sub_resource type="Shortcut" id="7"]
 
-[sub_resource type="ShortCut" id=5]
-shortcut = SubResource( 4 )
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0du0"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7294118)
 
-[sub_resource type="InputEventAction" id=6]
-action = "reset"
+[sub_resource type="Shortcut" id="9"]
 
-[sub_resource type="ShortCut" id=7]
-shortcut = SubResource( 6 )
+[sub_resource type="Shortcut" id="11"]
 
-[sub_resource type="InputEventAction" id=8]
-action = "loop"
+[sub_resource type="Shortcut" id="13"]
 
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
+[sub_resource type="Shortcut" id="15"]
 
-[sub_resource type="InputEventAction" id=10]
-action = "minus1"
+[sub_resource type="Shortcut" id="17"]
 
-[sub_resource type="ShortCut" id=11]
-shortcut = SubResource( 10 )
+[sub_resource type="Shortcut" id="19"]
 
-[sub_resource type="InputEventAction" id=12]
-action = "plus1"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cm0pq"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7294118)
 
-[sub_resource type="ShortCut" id=13]
-shortcut = SubResource( 12 )
+[sub_resource type="Shortcut" id="33"]
 
-[sub_resource type="InputEventAction" id=14]
-action = "minus5"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fos0i"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7294118)
 
-[sub_resource type="ShortCut" id=15]
-shortcut = SubResource( 14 )
+[sub_resource type="Shortcut" id="34"]
 
-[sub_resource type="InputEventAction" id=16]
-action = "plus5"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dxm6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7294118)
 
-[sub_resource type="ShortCut" id=17]
-shortcut = SubResource( 16 )
+[sub_resource type="Shortcut" id="23"]
 
-[sub_resource type="InputEventAction" id=18]
-action = "open"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu6xs"]
+bg_color = Color(0.59919906, 0.59919894, 0.5991992, 0.7294118)
 
-[sub_resource type="ShortCut" id=19]
-shortcut = SubResource( 18 )
+[sub_resource type="Shortcut" id="25"]
 
-[sub_resource type="InputEventAction" id=32]
-action = "smooth"
+[sub_resource type="Shortcut" id="27"]
 
-[sub_resource type="ShortCut" id=33]
-shortcut = SubResource( 32 )
+[sub_resource type="Shortcut" id="29"]
 
-[sub_resource type="InputEventAction" id=31]
-action = "chord"
+[sub_resource type="FontFile" id="30"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="ShortCut" id=34]
-shortcut = SubResource( 31 )
+[node name="Main" type="Node2D" unique_id=1817693865]
+script = ExtResource("1")
+gradient = SubResource("1")
+line_color = Color(0.137255, 0.137255, 0.137255, 1)
+white_key_color = Color(0.270588, 0.270588, 0.270588, 1)
+black_key_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+c_color = Color(0.372549, 0.372549, 0.372549, 1)
+middle_c_color = Color(0.470588, 0.470588, 0.470588, 1)
+chord_key_default_color = Color(1, 1, 1, 0.145098)
+chord_key_activated_color = Color(1, 1, 1, 1)
+chord_key_topthree_color = Color(0.470588, 1, 1, 1)
 
-[sub_resource type="InputEventAction" id=22]
-action = "filter"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=659498469]
+bus = &"Analyze"
 
-[sub_resource type="ShortCut" id=23]
-shortcut = SubResource( 22 )
+[node name="ControlHide" type="Control" parent="." unique_id=568741406]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 
-[sub_resource type="InputEventAction" id=24]
-action = "fullscreen"
-
-[sub_resource type="ShortCut" id=25]
-shortcut = SubResource( 24 )
-
-[sub_resource type="InputEventAction" id=26]
-action = "mute"
-
-[sub_resource type="ShortCut" id=27]
-shortcut = SubResource( 26 )
-
-[sub_resource type="InputEventAction" id=28]
-action = "color"
-
-[sub_resource type="ShortCut" id=29]
-shortcut = SubResource( 28 )
-
-[sub_resource type="DynamicFont" id=30]
-size = 32
-font_data = ExtResource( 2 )
-
-[node name="Main" type="Node2D"]
-script = ExtResource( 1 )
-gradient = SubResource( 1 )
-line_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-white_key_color = Color( 0.270588, 0.270588, 0.270588, 1 )
-black_key_color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
-c_color = Color( 0.372549, 0.372549, 0.372549, 1 )
-middle_c_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-chord_key_default_color = Color( 1, 1, 1, 0.145098 )
-chord_key_activated_color = Color( 1, 1, 1, 1 )
-chord_key_topthree_color = Color( 0.470588, 1, 1, 1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Analyze"
-
-[node name="ControlHide" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="HideRegion" type="Control" parent="ControlHide"]
+[node name="HideRegion" type="Control" parent="ControlHide" unique_id=1126109683]
+anchors_preset = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -152.0
-margin_right = 8.0
-margin_bottom = 56.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -152.0
+offset_right = 8.0
+offset_bottom = 56.0
 
-[node name="hide" type="Button" parent="ControlHide/HideRegion"]
+[node name="hide" type="Button" parent="ControlHide/HideRegion" unique_id=149648859]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -64.0
-margin_top = 16.0
-margin_right = 64.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (H)"
+offset_left = -64.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (H)"
 mouse_filter = 1
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 3 )
+shortcut = SubResource("3")
+shortcut_in_tooltip = false
 text = "hide UI"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Control" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+[node name="Control" type="Control" parent="." unique_id=948687202]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="filename" type="Label" parent="Control"]
+[node name="filename" type="Label" parent="Control" unique_id=542744236]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -624.0
-margin_top = 56.0
-margin_right = 624.0
-margin_bottom = 70.0
+offset_left = -624.0
+offset_top = 56.0
+offset_right = 624.0
+offset_bottom = 70.0
 text = "No file chosen"
-align = 1
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="startstop" type="Button" parent="Control"]
+[node name="startstop" type="Button" parent="Control" unique_id=284109778]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -64.0
-margin_top = 104.0
-margin_right = 64.0
-margin_bottom = 124.0
-hint_tooltip = "shortcut: (Space)"
+offset_left = -64.0
+offset_top = 104.0
+offset_right = 64.0
+offset_bottom = 135.0
+grow_horizontal = 2
+tooltip_text = "shortcut: (Space)"
 disabled = true
 toggle_mode = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 5 )
+shortcut = SubResource("5")
+shortcut_in_tooltip = false
 text = "play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="reset" type="Button" parent="Control"]
+[node name="reset" type="Button" parent="Control" unique_id=1278114839]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -40.0
-margin_top = 136.0
-margin_right = 40.0
-margin_bottom = 156.0
-hint_tooltip = "shortcut: (R)
+offset_left = -40.0
+offset_top = 136.0
+offset_right = 40.0
+offset_bottom = 156.0
+tooltip_text = "shortcut: (R)
 jump to start of track"
 disabled = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 7 )
+shortcut = SubResource("7")
+shortcut_in_tooltip = false
 text = "reset"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="loop" type="Button" parent="Control"]
+[node name="loop" type="Button" parent="Control" unique_id=24420009]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -120.0
-margin_top = 136.0
-margin_right = -56.0
-margin_bottom = 156.0
-hint_tooltip = "shortcut: (L)
+offset_left = -120.0
+offset_top = 136.0
+offset_right = -56.0
+offset_bottom = 156.0
+tooltip_text = "shortcut: (L)
 make track loop after it ends"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_r0du0")
 toggle_mode = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 9 )
+shortcut = SubResource("9")
+shortcut_in_tooltip = false
 text = "loop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="minus1" type="Button" parent="Control"]
+[node name="minus1" type="Button" parent="Control" unique_id=988235815]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -136.0
-margin_top = 104.0
-margin_right = -80.0
-margin_bottom = 124.0
-rect_pivot_offset = Vector2( 40, 10 )
-hint_tooltip = "shortcut: (Down Arrow)"
+offset_left = -136.0
+offset_top = 104.0
+offset_right = -80.0
+offset_bottom = 124.0
+pivot_offset = Vector2(40, 10)
+tooltip_text = "shortcut: (Down Arrow)"
 disabled = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 11 )
+shortcut = SubResource("11")
+shortcut_in_tooltip = false
 text = "-1 s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="plus1" type="Button" parent="Control"]
+[node name="plus1" type="Button" parent="Control" unique_id=1955476348]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 80.0
-margin_top = 104.0
-margin_right = 136.0
-margin_bottom = 124.0
-rect_pivot_offset = Vector2( 40, 10 )
-hint_tooltip = "shortcut: (Up Arrow)"
+offset_left = 80.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 124.0
+pivot_offset = Vector2(40, 10)
+tooltip_text = "shortcut: (Up Arrow)"
 disabled = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 13 )
+shortcut = SubResource("13")
+shortcut_in_tooltip = false
 text = "+1 s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="minus5" type="Button" parent="Control"]
+[node name="minus5" type="Button" parent="Control" unique_id=1128778530]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -208.0
-margin_top = 104.0
-margin_right = -152.0
-margin_bottom = 124.0
-rect_pivot_offset = Vector2( 40, 10 )
-hint_tooltip = "shortcut: (Left Arrow)"
+offset_left = -208.0
+offset_top = 104.0
+offset_right = -152.0
+offset_bottom = 124.0
+pivot_offset = Vector2(40, 10)
+tooltip_text = "shortcut: (Left Arrow)"
 disabled = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 15 )
+shortcut = SubResource("15")
+shortcut_in_tooltip = false
 text = "-5 s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="plus5" type="Button" parent="Control"]
+[node name="plus5" type="Button" parent="Control" unique_id=334782369]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 152.0
-margin_top = 104.0
-margin_right = 208.0
-margin_bottom = 124.0
-rect_pivot_offset = Vector2( 40, 10 )
-hint_tooltip = "shortcut: (Right Arrow)"
+offset_left = 152.0
+offset_top = 104.0
+offset_right = 208.0
+offset_bottom = 124.0
+pivot_offset = Vector2(40, 10)
+tooltip_text = "shortcut: (Right Arrow)"
 disabled = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 17 )
+shortcut = SubResource("17")
+shortcut_in_tooltip = false
 text = "+5 s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TimeBar" type="HScrollBar" parent="Control"]
+[node name="TimeBar" type="HScrollBar" parent="Control" unique_id=1554429002]
+layout_mode = 0
 anchor_right = 1.0
-margin_left = 32.0
-margin_top = 80.0
-margin_right = -32.0
-margin_bottom = 92.0
+offset_left = 32.0
+offset_top = 80.0
+offset_right = -32.0
+offset_bottom = 92.0
 max_value = 0.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Color1" type="ColorPickerButton" parent="Control"]
-margin_left = 56.0
-margin_top = 48.0
-margin_right = 112.0
-margin_bottom = 68.0
-hint_tooltip = "change colour of lower frequencies
+[node name="Color1" type="ColorPickerButton" parent="Control" unique_id=47958781]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 48.0
+offset_right = 112.0
+offset_bottom = 68.0
+tooltip_text = "change colour of lower frequencies
 press (C) to change colour mode"
-color = Color( 1, 0, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(1, 0, 1, 1)
 
-[node name="Color2" type="ColorPickerButton" parent="Control"]
-margin_left = 128.0
-margin_top = 48.0
-margin_right = 184.0
-margin_bottom = 68.0
-hint_tooltip = "change colour of higher frequencies
+[node name="Color2" type="ColorPickerButton" parent="Control" unique_id=522834979]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 184.0
+offset_bottom = 68.0
+tooltip_text = "change colour of higher frequencies
 press (C) to change colour mode"
-color = Color( 0, 1, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 1, 1, 1)
 
-[node name="open" type="Button" parent="Control"]
-margin_left = 56.0
-margin_top = 16.0
-margin_right = 184.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (O)
+[node name="open" type="Button" parent="Control" unique_id=695290374]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (O)
 only .mp3 and .ogg files are supported"
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 19 )
+shortcut = SubResource("19")
+shortcut_in_tooltip = false
 text = "open file"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="smooth" type="Button" parent="Control"]
+[node name="smooth" type="Button" parent="Control" unique_id=473669270]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -328.0
-margin_top = 16.0
-margin_right = -200.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (S)
+offset_left = -328.0
+offset_top = 16.0
+offset_right = -200.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (S)
 smooth values over several frames, so that they appear less jumpy"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cm0pq")
 toggle_mode = true
-shortcut_in_tooltip = false
-pressed = true
+button_pressed = true
 action_mode = 0
-shortcut = SubResource( 33 )
+shortcut = SubResource("33")
+shortcut_in_tooltip = false
 text = "smoothing"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="chord" type="Button" parent="Control"]
-margin_left = 200.0
-margin_top = 16.0
-margin_right = 328.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (D)
+[node name="chord" type="Button" parent="Control" unique_id=1446807035]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 328.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (D)
 show/hide chord analysis"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fos0i")
 toggle_mode = true
-shortcut_in_tooltip = false
-pressed = true
 action_mode = 0
-shortcut = SubResource( 34 )
+shortcut = SubResource("34")
+shortcut_in_tooltip = false
 text = "chord"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="filter" type="Button" parent="Control"]
+[node name="filter" type="Button" parent="Control" unique_id=561320513]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -184.0
-margin_top = 16.0
-margin_right = -56.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (F)
+offset_left = -184.0
+offset_top = 16.0
+offset_right = -56.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (F)
 highlight the peaks of frequencies"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3dxm6")
 toggle_mode = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 23 )
+shortcut = SubResource("23")
+shortcut_in_tooltip = false
 text = "filtering"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="full_screen" type="Button" parent="Control"]
+[node name="full_screen" type="Button" parent="Control" unique_id=1524884022]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 8.0
-margin_top = 16.0
-margin_right = 136.0
-margin_bottom = 36.0
-hint_tooltip = "shortcut: (F11)"
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 36.0
+tooltip_text = "shortcut: (F11)"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uu6xs")
 toggle_mode = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 25 )
+shortcut = SubResource("25")
+shortcut_in_tooltip = false
 text = "full screen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="FileDialog" type="FileDialog" parent="Control"]
-margin_right = 560.0
-margin_bottom = 312.0
-window_title = "Open a File"
-mode = 0
+[node name="FileDialog" type="FileDialog" parent="Control" unique_id=1149385538]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
 access = 2
-filters = PoolStringArray( "*.mp3", "*.ogg" )
-current_dir = "/"
-current_path = "/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+filters = PackedStringArray("*.mp3", "*.ogg")
 
-[node name="Timestamp" type="Label" parent="Control"]
+[node name="Timestamp" type="Label" parent="Control" unique_id=279334983]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -96.0
-margin_top = 104.0
-margin_right = -56.0
-margin_bottom = 118.0
+offset_left = -96.0
+offset_top = 104.0
+offset_right = -56.0
+offset_bottom = 118.0
 text = "0:00"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 2
 
-[node name="min_dB_label" type="Label" parent="Control"]
+[node name="min_dB_label" type="Label" parent="Control" unique_id=169166801]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -320.0
-margin_top = 56.0
-margin_right = -274.0
-margin_bottom = 70.0
-hint_tooltip = "adjust the minimum dB that is shown"
+offset_left = -320.0
+offset_top = 56.0
+offset_right = -274.0
+offset_bottom = 70.0
+tooltip_text = "adjust the minimum dB that is shown"
 mouse_filter = 0
 text = "clamp"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="tilt_label" type="Label" parent="Control"]
+[node name="tilt_label" type="Label" parent="Control" unique_id=99603497]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -176.0
-margin_top = 56.0
-margin_right = -130.0
-margin_bottom = 70.0
-hint_tooltip = "adjust the balance of high and low frequencies"
+offset_left = -176.0
+offset_top = 56.0
+offset_right = -130.0
+offset_bottom = 70.0
+tooltip_text = "adjust the balance of high and low frequencies"
 mouse_filter = 0
 text = "tilt"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="min_dB" type="SpinBox" parent="Control"]
+[node name="min_dB" type="SpinBox" parent="Control" unique_id=2124252247]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -272.0
-margin_top = 48.0
-margin_right = -190.0
-margin_bottom = 72.0
-hint_tooltip = "adjust the minimum dB that is shown"
+offset_left = -272.0
+offset_top = 48.0
+offset_right = -190.0
+offset_bottom = 72.0
+tooltip_text = "adjust the minimum dB that is shown"
 min_value = -80.0
 max_value = -20.0
 step = 0.1
 value = -60.0
 suffix = "dB"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="tilt" type="SpinBox" parent="Control"]
+[node name="tilt" type="SpinBox" parent="Control" unique_id=1849325616]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -136.0
-margin_top = 48.0
-margin_right = -54.0
-margin_bottom = 72.0
-hint_tooltip = "adjust the balance of high and low frequencies"
+offset_left = -136.0
+offset_top = 48.0
+offset_right = -54.0
+offset_bottom = 72.0
+tooltip_text = "adjust the balance of high and low frequencies"
 min_value = -40.0
 max_value = 40.0
 step = 0.1
 suffix = "dB"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="mute" type="Button" parent="Control"]
-margin_left = 32.0
-margin_top = -32.0
-margin_right = 88.0
-margin_bottom = -12.0
+[node name="mute" type="Button" parent="Control" unique_id=1140950680]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 16.0
+offset_right = 401.0
+offset_bottom = 47.0
 toggle_mode = true
-shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource( 27 )
+shortcut = SubResource("27")
+shortcut_in_tooltip = false
 text = "mute"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="color" type="Button" parent="Control"]
-margin_left = 104.0
-margin_top = -32.0
-margin_right = 160.0
-margin_bottom = -12.0
-shortcut_in_tooltip = false
+[node name="color" type="Button" parent="Control" unique_id=444568544]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 16.0
+offset_right = 474.0
+offset_bottom = 47.0
 action_mode = 0
-shortcut = SubResource( 29 )
+shortcut = SubResource("29")
+shortcut_in_tooltip = false
 text = "color"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="volume" type="HSlider" parent="Control"]
-margin_left = 56.0
-margin_top = 104.0
-margin_right = 136.0
-margin_bottom = 120.0
-hint_tooltip = "control audio volume (doesn't affect visuals)
+[node name="volume" type="HSlider" parent="Control" unique_id=219735370]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 120.0
+tooltip_text = "control audio volume (doesn't affect visuals)
 mute by pressing (M)"
 max_value = 1.0
 step = 0.0
 value = 1.0
 allow_lesser = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="OptionButton" type="OptionButton" parent="Control"]
+[node name="OptionButton" type="OptionButton" parent="Control" unique_id=1852218983]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 56.0
-margin_top = 136.0
-margin_right = 120.0
-margin_bottom = 156.0
-hint_tooltip = "change playback speed
+offset_left = 56.0
+offset_top = 136.0
+offset_right = 120.0
+offset_bottom = 156.0
+tooltip_text = "change playback speed
 (will lower sound quality on values other than 1.0x)"
-text = "1.0x"
-items = [ "2.0x", null, false, 0, null, "1.5x", null, false, 1, null, "1.0x", null, false, 3, null, "0.8x", null, false, 4, null, "0.5x", null, false, 5, null ]
 selected = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+item_count = 5
+popup/item_0/text = "2.0"
+popup/item_0/id = 0
+popup/item_1/text = "1.5"
+popup/item_1/id = 1
+popup/item_2/text = "1.0"
+popup/item_2/id = 2
+popup/item_3/text = "0.8"
+popup/item_3/id = 3
+popup/item_4/text = "0.5"
+popup/item_4/id = 4
 
-[node name="chord_keys" type="Control" parent="Control"]
-margin_left = 56.0
-margin_top = 169.0
-margin_right = 96.0
-margin_bottom = 209.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="chord_keys" type="Control" parent="Control" unique_id=1481169782]
+visible = false
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 169.0
+offset_right = 96.0
+offset_bottom = 209.0
 
-[node name="0" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="0" type="Control" parent="Control/chord_keys" unique_id=1827448787]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/0"]
-margin_top = 42.0
-margin_right = 20.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/0" unique_id=342767498]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 20.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/0"]
-margin_top = 1.0
-margin_right = 12.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/0" unique_id=1741071214]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 12.0
+offset_bottom = 42.0
 
-[node name="1" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="1" type="Control" parent="Control/chord_keys" unique_id=1415854356]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/1"]
-margin_left = 15.0
-margin_top = 1.0
-margin_right = 27.0
-margin_bottom = 39.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/1" unique_id=1272277212]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 1.0
+offset_right = 27.0
+offset_bottom = 39.0
 
-[node name="2" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="2" type="Control" parent="Control/chord_keys" unique_id=1043554024]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/2"]
-margin_left = 23.0
-margin_top = 42.0
-margin_right = 43.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/2" unique_id=1614844587]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 42.0
+offset_right = 43.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/2"]
-margin_left = 30.0
-margin_top = 1.0
-margin_right = 37.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/2" unique_id=1165145082]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 1.0
+offset_right = 37.0
+offset_bottom = 42.0
 
-[node name="3" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="3" type="Control" parent="Control/chord_keys" unique_id=1406212828]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/3"]
-margin_left = 40.0
-margin_top = 1.0
-margin_right = 52.0
-margin_bottom = 39.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/3" unique_id=54030442]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 1.0
+offset_right = 52.0
+offset_bottom = 39.0
 
-[node name="4" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="4" type="Control" parent="Control/chord_keys" unique_id=623033347]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/4"]
-margin_left = 46.0
-margin_top = 42.0
-margin_right = 66.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/4" unique_id=275717533]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 42.0
+offset_right = 66.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/4"]
-margin_left = 55.0
-margin_top = 1.0
-margin_right = 66.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/4" unique_id=2063030146]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 1.0
+offset_right = 66.0
+offset_bottom = 42.0
 
-[node name="5" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="5" type="Control" parent="Control/chord_keys" unique_id=885348178]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/5"]
-margin_left = 69.0
-margin_top = 42.0
-margin_right = 89.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/5" unique_id=141139603]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 42.0
+offset_right = 89.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/5"]
-margin_left = 69.0
-margin_top = 1.0
-margin_right = 79.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/5" unique_id=1419438588]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1.0
+offset_right = 79.0
+offset_bottom = 42.0
 
-[node name="6" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="6" type="Control" parent="Control/chord_keys" unique_id=1940109773]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/6"]
-margin_left = 82.0
-margin_top = 1.0
-margin_right = 94.0
-margin_bottom = 39.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/6" unique_id=1873930413]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 94.0
+offset_bottom = 39.0
 
-[node name="7" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="7" type="Control" parent="Control/chord_keys" unique_id=1998368035]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/7"]
-margin_left = 92.0
-margin_top = 42.0
-margin_right = 112.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/7" unique_id=1538223027]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 42.0
+offset_right = 112.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/7"]
-margin_left = 97.0
-margin_top = 1.0
-margin_right = 104.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/7" unique_id=1485028320]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 1.0
+offset_right = 104.0
+offset_bottom = 42.0
 
-[node name="8" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="8" type="Control" parent="Control/chord_keys" unique_id=1975946645]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/8"]
-margin_left = 107.0
-margin_top = 1.0
-margin_right = 119.0
-margin_bottom = 39.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/8" unique_id=1071062373]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 1.0
+offset_right = 119.0
+offset_bottom = 39.0
 
-[node name="9" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="9" type="Control" parent="Control/chord_keys" unique_id=1225989071]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/9"]
-margin_left = 115.0
-margin_top = 42.0
-margin_right = 135.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/9" unique_id=1889036511]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 42.0
+offset_right = 135.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/9"]
-margin_left = 122.0
-margin_top = 1.0
-margin_right = 129.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/9" unique_id=814677518]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 1.0
+offset_right = 129.0
+offset_bottom = 42.0
 
-[node name="10" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="10" type="Control" parent="Control/chord_keys" unique_id=2783846]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/10"]
-margin_left = 132.0
-margin_top = 1.0
-margin_right = 144.0
-margin_bottom = 39.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/10" unique_id=471571070]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 1.0
+offset_right = 144.0
+offset_bottom = 39.0
 
-[node name="11" type="Control" parent="Control/chord_keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="11" type="Control" parent="Control/chord_keys" unique_id=1809930796]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/11"]
-margin_left = 138.0
-margin_top = 42.0
-margin_right = 158.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="Control/chord_keys/11" unique_id=1598629933]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 42.0
+offset_right = 158.0
+offset_bottom = 64.0
 
-[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/11"]
-margin_left = 147.0
-margin_top = 1.0
-margin_right = 158.0
-margin_bottom = 42.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect2" type="ColorRect" parent="Control/chord_keys/11" unique_id=2133488697]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 1.0
+offset_right = 158.0
+offset_bottom = 42.0
 
-[node name="chord_name" type="Label" parent="Control"]
-modulate = Color( 1, 1, 1, 0.768627 )
-margin_left = 231.0
-margin_top = 186.0
-margin_right = 345.0
-margin_bottom = 233.0
-custom_fonts/font = SubResource( 30 )
+[node name="chord_name" type="Label" parent="Control" unique_id=2085507759]
+visible = false
+modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 0
+offset_left = 231.0
+offset_top = 186.0
+offset_right = 345.0
+offset_bottom = 233.0
+theme_override_fonts/font = SubResource("30")
 text = "C#sus2"
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="chord_tween" type="Tween" parent="Control"]
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="ControlHide/HideRegion" to="." method="_on_HideRegion_mouse_entered"]
 [connection signal="mouse_exited" from="ControlHide/HideRegion" to="." method="_on_HideRegion_mouse_exited"]

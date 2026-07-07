@@ -19,16 +19,16 @@ var magnitude_decrease_speed: float = 1.5 * lowest_magnitude
 
 var color_array = []
 enum ColorMode {USER, GRADIENT_CHANGE, SINGLE_CHANGE, RAINBOW}
-var color_mode = ColorMode.USER
+var color_mode = ColorMode.GRADIENT_CHANGE
 var time: float = 0.0
 var color_change_speed: float = 60
 
 var magnitude_bar_width: float = 0.4
-export var gradient: Gradient
+@export var gradient: Gradient
 var tilt_amount: float = 0.0
 
 var line_opacity: float = 0.0
-export var line_color: Color
+@export var line_color: Color
 var line_appear_time: float = 0.2
 var line_disappear_time: float = 0.5
 var line_display_timer: float = 0.0
@@ -37,20 +37,20 @@ var line_display_duration: float = 1.0
 var key_white_array = [] # stores information of key color (true if white)
 var piano_bar_height: float = 0.15
 var piano_bar_width: float = 0.9
-onready var bar_screen_height: float = 1.0 - piano_bar_height
-export var white_key_color: Color
-export var black_key_color: Color
+@onready var bar_screen_height: float = 1.0 - piano_bar_height
+@export var white_key_color: Color
+@export var black_key_color: Color
 var white_key_height: float = 0.8
 var black_key_height: float = 0.5
 var c_length: float = 0.05
-export var c_color: Color
-export var middle_c_color: Color
+@export var c_color: Color
+@export var middle_c_color: Color
 
 # chord analysis stuff
 var chord_key_array = [] # stores the frequency of pressed keys grouped by pitch
-export var chord_key_default_color: Color
-export var chord_key_activated_color: Color
-export var chord_key_topthree_color: Color
+@export var chord_key_default_color: Color
+@export var chord_key_activated_color: Color
+@export var chord_key_topthree_color: Color
 var key_names = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 var invalid_chord: String = "---"
 var chord: String = invalid_chord
@@ -83,7 +83,9 @@ var button_visible: bool = true
 
 var actual_volume: float = 1.0
 
-func map_range(value, source_start, source_end, target_start, target_end):
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+func map_range(value, source_start, source_end, target_start, target_end) -> float:
 	var mapped_value: float = value - source_start
 	if source_start != source_end:
 		mapped_value *= (target_end - target_start) / (source_end - source_start)
@@ -92,7 +94,7 @@ func map_range(value, source_start, source_end, target_start, target_end):
 		mapped_value = target_start
 	return mapped_value
 
-func linear_interpolate(factor: float, value_1, value_2):
+func lerp(factor: float, value_1, value_2):
 	return (1.0 - factor) * value_1 + factor * value_2
 
 func initialize_values():
@@ -102,63 +104,61 @@ func initialize_values():
 	$Control/plus1.disabled = false
 	$Control/minus5.disabled = false
 	$Control/plus5.disabled = false
-	$AudioStreamPlayer.stop()
+	audio_stream_player.stop()
 	playing_mode = false
 	play_position = 0.0
-	stream_length = $AudioStreamPlayer.stream.get_length()
-	stream_length -= max(stream_length * end_cut_multiply, end_cut_constant) # make it a bit smaller because $AudioStreamPlayer.stream.get_length() seems a bit longer for some reason
+	stream_length = audio_stream_player.stream.get_length()
+	stream_length -= max(stream_length * end_cut_multiply, end_cut_constant) # make it a bit smaller because audio_stream_player.stream.get_length() seems a bit longer for some reason
 	$Control/TimeBar.max_value = stream_length
 	$Control/TimeBar.value = play_position
-	$Control/startstop.pressed = false
+	$Control/startstop.button_pressed = false
 
 func change_time(new_time):
 	play_position = clamp(new_time, 0.0, stream_length)
 	$Control/TimeBar.value = play_position
-	$AudioStreamPlayer.seek(play_position)
+	audio_stream_player.seek(play_position)
 
 func import_mp3(path: String):
-	var file = File.new()
-	file.open(path, File.READ)
+	var file = FileAccess.open(path, FileAccess.READ)
 	var stream = AudioStreamMP3.new()
-	stream.data = file.get_buffer(file.get_len())
+	stream.data = file.get_buffer(file.get_length())
 	return stream
 
 func import_ogg(path: String):
-	var file = File.new()
-	file.open(path, File.READ)
-	var stream = AudioStreamOGGVorbis.new()
-	stream.data = file.get_buffer(file.get_len())
+	var file = FileAccess.open(path, FileAccess.READ)
+	var stream = AudioStreamOggVorbis.new()
+	stream.data = file.get_buffer(file.get_length())
 	file.close()
 	return stream
 
 func control_playback():
 	if file_chosen:
 		reached_end = play_position >= stream_length
-		var stream_playing: bool = $AudioStreamPlayer.playing
+		var stream_playing: bool = audio_stream_player.playing
 		if not scrubbing:
 			if playing_mode:
 				if not stream_playing:
 					if not reached_end:
-						$AudioStreamPlayer.play(play_position)
+						audio_stream_player.play(play_position)
 					elif reached_end and loop:
-						$AudioStreamPlayer.play(0.0)
+						audio_stream_player.play(0.0)
 				elif stream_playing and reached_end:
 					if loop:
-						$AudioStreamPlayer.play(0.0)
+						audio_stream_player.play(0.0)
 					else:
-						$AudioStreamPlayer.stop()
+						audio_stream_player.stop()
 			elif not playing_mode and stream_playing:
-				$AudioStreamPlayer.stop()
-			play_position = $AudioStreamPlayer.get_playback_position()
+				audio_stream_player.stop()
+			play_position = audio_stream_player.get_playback_position()
 			$Control/TimeBar.value = play_position
 		elif scrubbing:
 			if playing_mode and stream_playing:
-				$AudioStreamPlayer.stop()
+				audio_stream_player.stop()
 			play_position = $Control/TimeBar.value
-			$AudioStreamPlayer.seek(play_position)
+			audio_stream_player.seek(play_position)
 			scrubbing = false
 
-func color_from_hue(hue: float):
+func color_from_hue(hue: float) -> Color:
 	return Color.from_hsv(hue - floor(hue), 1.0, 1.0)
 
 func update_colors():
@@ -166,7 +166,7 @@ func update_colors():
 		ColorMode.USER:
 			for key_index in range(0, key_number):
 				var x_position_uniform: float = 1.0 / key_number * (key_index + 0.5)
-				color_array[key_index] = gradient.interpolate(x_position_uniform)
+				color_array[key_index] = gradient.sample(x_position_uniform)
 		ColorMode.GRADIENT_CHANGE:
 			var hue_1: float = time / color_change_speed
 			var hue_2: float = hue_1 + 1.0 / 3.0
@@ -174,7 +174,7 @@ func update_colors():
 			gradient.set_color(1, color_from_hue(hue_2))
 			for key_index in range(0, key_number):
 				var x_position_uniform: float = 1.0 / key_number * (key_index + 0.5)
-				var color: Color = color_from_hue(gradient.interpolate(x_position_uniform).h)
+				var color: Color = color_from_hue(gradient.sample(x_position_uniform).h)
 				color = color.lightened(map_range(abs(x_position_uniform - 0.5), 0.0, 0.5, 0.5, 0.0))
 				color_array[key_index] = color
 		ColorMode.SINGLE_CHANGE:
@@ -190,11 +190,11 @@ func update_colors():
 
 func change_speed(speed: float):
 	if speed == 1.0:
-		$AudioStreamPlayer.bus = "Analyze"
-		$AudioStreamPlayer.pitch_scale = 1.0
+		audio_stream_player.bus = "Analyze"
+		audio_stream_player.pitch_scale = 1.0
 	else:
-		$AudioStreamPlayer.bus = "PitchShifted"
-		$AudioStreamPlayer.pitch_scale = speed
+		audio_stream_player.bus = "PitchShifted"
+		audio_stream_player.pitch_scale = speed
 		AudioServer.get_bus_effect(2, 0).pitch_scale = 1.0 / speed
 
 func change_button_visibility():
@@ -204,17 +204,17 @@ func change_button_visibility():
 		$ControlHide/HideRegion/hide.modulate.a = 0.0
 
 func analyze_frequencies():
-	if not $AudioStreamPlayer.playing:
+	if not audio_stream_player.playing:
 		# stop processing when paused, so that it appears frozen
 		return
-	
+		
 	for key_index in range(0, key_number):
 		var frequency_start: float = lowest_frequency * pow(2.0, (1.0 / 12.0) * (key_index - 0.5))
 		var frequency_end: float = lowest_frequency * pow(2.0, (1.0 / 12.0) * (key_index + 0.5))
 		var magnitude: Vector2 = spectrum.get_magnitude_for_frequency_range(frequency_start, frequency_end, AudioEffectSpectrumAnalyzerInstance.MAGNITUDE_AVERAGE)
-		if not $AudioStreamPlayer.playing: # do this or weird stuff will happend while paused (spooky)
+		if not audio_stream_player.playing: # do this or weird stuff will happened while paused (spooky)
 			magnitude = Vector2.ZERO
-		var magnitude_db: float = linear2db((magnitude.x + magnitude.y) / 2)
+		var magnitude_db: float = linear_to_db((magnitude.x + magnitude.y) / 2)
 		
 		# tilt magnitude
 		magnitude_db += map_range(key_index, 0, key_number - 1, -tilt_amount, tilt_amount)
@@ -222,20 +222,22 @@ func analyze_frequencies():
 		# fix infinity errors when magnitude is 0
 		if magnitude_db == -INF:
 			magnitude_db = absolute_lowest_magnitude
-		
-		# average values over several frames
+
 		var sum: float = magnitude_db
-		for frame in averaging_frames - 1:
+		for frame in range(averaging_frames - 1):
 			var copied_value: float = magnitude_db_array[key_index][frame + 1]
 			magnitude_db_array[key_index][frame] = copied_value
 			sum += copied_value
+				
+		# average values over several frames
 		if smooth:
 			var average: float = sum / averaging_frames
 			var difference: float = magnitude_db - magnitude_db_array[key_index][averaging_frames - 2]
 			difference = clamp(map_range(difference, 0.0, 20.0, 0.0, 1.0), 0.0, 1.0)
 			# do this so that sudden increases in magnitudes aren't smoothed out
-			magnitude_db = linear_interpolate(difference, average, magnitude_db)
-#			magnitude_db = average
+			magnitude_db = lerp(difference, average, magnitude_db)
+			magnitude_db = average
+
 		magnitude_db_array[key_index][averaging_frames - 1] = magnitude_db
 		
 		# gradually decrease value to make it less jumpy
@@ -254,11 +256,11 @@ func analyze_frequencies():
 			filtered_magnitude_array[key_index] = max(0.0, filtered_magnitude_array[key_index] - 1.0 / filter_disappear_speed * delta)
 
 func analyze_chord():
-	# summerize notes over octaves
+	# summarize notes over octaves
 	var threshold_magnitude: float = lowest_magnitude - absolute_lowest_magnitude
-	for chord_key_index in 12: # add up the magnitude of same notes through different octaves
+	for chord_key_index in 12: # add up the magnitude of same notes through different fractal_octaves
 		chord_key_array[chord_key_index] = 0
-		for original_key_index in 7: # number of full octaves
+		for original_key_index in 7: # number of full fractal_octaves
 			var current_key_index: int = 3 + chord_key_index + (original_key_index * 12) # only use keys in octave 1 to 7 (discarding 0 and 8)
 			var current_magnitude: float = (magnitude_db_array[current_key_index][averaging_frames - 1] - absolute_lowest_magnitude) * filtered_magnitude_array[current_key_index]
 			chord_key_array[chord_key_index] += max(current_magnitude - threshold_magnitude, 0)
@@ -324,8 +326,8 @@ func draw_lines():
 	for db in range(-120, 40, 20):
 		var line_height_left = screen_size.y * map_range(db - tilt_amount, lowest_magnitude, 0.0, 1.0, 0.0) * bar_screen_height
 		var line_height_right = screen_size.y * map_range(db + tilt_amount, lowest_magnitude, 0.0, 1.0, 0.0) * bar_screen_height
-		draw_line(Vector2(0.0, line_height_left), Vector2(screen_size.x, line_height_right), color, 2.0, true)
-	draw_rect(Rect2(0, screen_size.y * bar_screen_height, screen_size.x, screen_size.y), Color.black) # hide lower portion of screen
+		draw_line(Vector2(0.0, line_height_left), Vector2(screen_size.x, line_height_right), color, 2.0)
+	draw_rect(Rect2(0, screen_size.y * bar_screen_height, screen_size.x, screen_size.y), Color.BLACK) # hide lower portion of screen
 
 func draw_key():
 	for key_index in range(0, key_number):
@@ -340,11 +342,11 @@ func draw_key():
 			emit_color = emit_color.lightened(map_range(magnitude_normalized, 1.0, 2.0, 0.0, 1.0))
 		var factor: float = filtered_magnitude_array[key_index] * min(magnitude_normalized, 1.0)
 		if key_white_array[key_index]:
-			var final_color: Color = white_key_color.linear_interpolate(emit_color, factor)
+			var final_color: Color = white_key_color.lerp(emit_color, factor)
 			draw_rect(Rect2(x_position - width / 2, screen_size.y - height, width, height), white_key_color)
 			draw_rect(Rect2(x_position - width / 2, screen_size.y - height, width, height * white_key_height), final_color)
 		else:
-			var final_color: Color = black_key_color.linear_interpolate(emit_color, factor)
+			var final_color: Color = black_key_color.lerp(emit_color, factor)
 			draw_rect(Rect2(x_position - width / 2, screen_size.y - height, width, height), black_key_color)
 			draw_rect(Rect2(x_position - width / 2, screen_size.y - height, width, height * black_key_height), final_color)
 
@@ -369,18 +371,20 @@ func draw_chord_keys():
 	for key_index in 12:
 		var current_value: float = chord_key_array[key_index]
 		if current_value >= third_highest:
-			chord_keys.get_node(str(key_index)).modulate = chord_key_default_color.linear_interpolate(chord_key_topthree_color, current_value)
+			chord_keys.get_node(str(key_index)).modulate = chord_key_default_color.lerp(chord_key_topthree_color, current_value)
 		else:
-			chord_keys.get_node(str(key_index)).modulate = chord_key_default_color.linear_interpolate(chord_key_activated_color, current_value)
+			chord_keys.get_node(str(key_index)).modulate = chord_key_default_color.lerp(chord_key_activated_color, current_value)
 	$Control/chord_name.text = chord
 	if chord != last_chord: # fade in text if chord has changed
-		$Control/chord_tween.interpolate_property($Control/chord_name, "self_modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.2, Tween.TRANS_CIRC, Tween.EASE_IN_OUT)
-		$Control/chord_tween.start()
+		var tween = create_tween()
+		tween.tween_property($Control/chord_name, "self_modulate", Color(1, 1, 1, 1), 0.2)
+		tween.set_trans(Tween.TRANS_CIRC)
+		tween.set_ease(Tween.EASE_IN_OUT)
 	last_chord = chord
 
 func _draw():
 	update_colors()
-	draw_rect(Rect2(0, 0, screen_size.x, screen_size.y), Color.black)
+	draw_rect(Rect2(0, 0, screen_size.x, screen_size.y), Color.BLACK)
 	draw_lines()
 	draw_magnitude()
 	draw_chord_keys()
@@ -390,14 +394,14 @@ func _draw():
 
 func viewport_size_changed():
 	screen_size = get_viewport().size
-	$Control.rect_size = screen_size
-	$ControlHide.rect_size = screen_size
+	$Control.size = screen_size
+	$ControlHide.size = screen_size
 	if hide_state != HideState.NONE:
-		$Control.rect_position.x = screen_size.x
+		$Control.position.x = screen_size.x
 
 func _ready():
 	# make viewport resize detectable
-	get_tree().get_root().connect("size_changed", self, "viewport_size_changed")
+	get_tree().get_root().connect("size_changed", Callable(self, "viewport_size_changed"))
 	viewport_size_changed()
 	
 	# initialize arrays
@@ -415,7 +419,7 @@ func _ready():
 				key_white_array[key_index] = false
 		
 		var x_position_uniform: float = 1.0 / key_number * (key_index + 0.5)
-		color_array.append(gradient.interpolate(x_position_uniform))
+		color_array.append(gradient.sample(x_position_uniform))
 	
 	for key_index in 12:
 		chord_key_array.append(0)
@@ -433,11 +437,9 @@ func _process(_delta):
 	
 	analyze_frequencies()
 	analyze_chord()
-	update()
+	queue_redraw()
 	
 	change_button_visibility()
-#	print(magnitude_db_array[40])
-#	print(play_position)
 
 func _on_startstop_toggled(button_pressed):
 	if button_pressed == true:
@@ -468,9 +470,9 @@ func _on_open_pressed():
 
 func _on_FileDialog_file_selected(path):
 	if String(path).ends_with(".ogg"):
-		$AudioStreamPlayer.stream = import_ogg(path)
+		audio_stream_player.stream = import_ogg(path)
 	elif String(path).ends_with(".mp3"):
-		$AudioStreamPlayer.stream = import_mp3(path)
+		audio_stream_player.stream = import_mp3(path)
 	file_chosen = true
 	$Control/filename.text = path
 	initialize_values()
@@ -530,7 +532,7 @@ func _on_hide_pressed():
 	match hide_state:
 		HideState.NONE:
 			hide_state = HideState.UI
-			$Control.rect_position.x = screen_size.x
+			$Control.position.x = screen_size.x
 			if $ControlHide/HideRegion/hide.is_hovered():
 				button_visible = true
 			else:
@@ -546,16 +548,16 @@ func _on_hide_pressed():
 			$ControlHide/HideRegion/hide.text = "unhide all"
 		HideState.BOTH:
 			hide_state = HideState.NONE
-			$Control.rect_position.x = 0
+			$Control.position.x = 0
 			bar_screen_height = 1.0 - piano_bar_height
 			button_visible = true
 			$ControlHide/HideRegion/hide.text = "hide UI"
 
 func _on_full_screen_toggled(button_pressed):
 	if button_pressed:
-		OS.window_fullscreen = true
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
-		OS.window_fullscreen = false
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 
 func _on_volume_value_changed(value):
 	# make volume control sound as linear as possible

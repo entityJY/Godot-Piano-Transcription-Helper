@@ -1,0 +1,17 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1783459783
+default_bus_layout.tres::AudioBusLayout::-1::1783459751::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1783459511::0::1::::<><><>0<>0<><>::
+Main.gd::GDScript::3203976741906834893::1783459751::0::1::::<>Node2D<><>0<>0<><>::
+Main.tscn::PackedScene::-1::1783459751::0::1::::<><><>0<>0<><>::res://Main.gd<>res://fonts/Metropolis-Regular.otf
+README.md::TextFile::-1::1783459511::0::1::::<><><>0<>0<><>::
+screenshot.png::CompressedTexture2D::71498283708832378::1783459511::1783459784::1::::<><><>0<>0<>0eea1df4c992f3dbc4456eb0e4067dc1<>res://.godot/imported/screenshot.png-024a21af5d37bf0f0dd0e2bccdd149d0.ctex::
+::res://fonts/::1783459511
+Metropolis-Regular.otf::FontFile::3743989759379215828::1783459511::1783459784::1::::<><><>0<>0<>e89167ca4d0c78dc7add826431f55034<>res://.godot/imported/Metropolis-Regular.otf-4f7b6860bc97a8a8f8a0e81a8f64901a.fontdata::
+SIL Open Font License.txt::TextFile::-1::1783459511::0::1::::<><><>0<>0<><>::
+::res://icons/::1783459511
+icon.icns::OtherFile::-1::1783459511::0::1::::<><><>0<>0<><>::
+icon.ico::OtherFile::-1::1783459511::0::1::::<><><>0<>0<><>::
+icon.png::CompressedTexture2D::2392023790508410515::1783459511::1783459784::1::::<><><>0<>0<>b0b8c216475ebc2fe6e8c59d8542618b<>res://.godot/imported/icon.png-66e56a551f174bdc993eb27d415a6710.ctex::
+::res://logs/::1783459511
+godot.log::TextFile::-1::1783459511::0::1::::<><><>0<>0<><>::
